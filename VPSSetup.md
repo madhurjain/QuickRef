@@ -114,6 +114,7 @@ sudo apt-get install build-essential
 ```
 
 ### Installing Laravel
+
 ```sh
 cd ~
 curl -sS https://getcomposer.org/installer | php
@@ -160,21 +161,23 @@ sudo apt-get install postgresql-9.3 postgresql-9.3-postgis-2.1 postgresql-contri
 sudo apt-get install libpq-dev build-essential
 ```
 
-http://trac.osgeo.org/postgis/wiki/UsersWikiPostGIS21UbuntuPGSQL93Apt
-
 Don’t add this precise repo on Ubuntu 14.04
+```sh
 sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main" >> /etc/apt/sources.list'
-
 wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
-
 sudo apt-get update
+```
+
+[ref](http://trac.osgeo.org/postgis/wiki/UsersWikiPostGIS21UbuntuPGSQL93Apt)
 
 ### Installing Python pip / virtualenv / uwsgi / django
 
 ```sh
 sudo apt-get install python-pip 
 ```
+
 or
+
 ```sh
 sudo easy_install pip
 ```
@@ -202,9 +205,11 @@ sudo apt-get install git
 
 ### Dependencies for monit
 
+```sh
 sudo apt-get install libpam0g-dev
 sudo apt-get install libssl-dev
 sudo apt-get install libcurl4-openssl-dev
+```
 
 still throwing SSL error ?
 
