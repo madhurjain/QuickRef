@@ -24,7 +24,8 @@ sudo apt-get upgrade
 ```
 
 ### Enable add-apt-repository
-(requied only on Ubuntu 12.04)
+(required only on Ubuntu 12.04)
+
 ```sh
 sudo apt-get install python-software-properties
 ```
@@ -103,8 +104,8 @@ sudo service php5-fpm restart
 ```sh
 sudo apt-get install phpmyadmin
 ```
-- Click Ok without selecting any server
-- Select No
+  * Click Ok without selecting any server
+  * Select No
 
 (if required. For C compiler)
 
