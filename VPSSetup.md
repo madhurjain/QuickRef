@@ -78,6 +78,9 @@ COMMIT
 
 ```sh
 sudo vim /etc/network/if-pre-up.d/firewall
+```
+
+```sh
 #!/bin/sh
 /sbin/iptables-restore < /etc/iptables.firewall.rules
 sudo chmod +x /etc/network/if-pre-up.d/firewall
@@ -162,6 +165,7 @@ sudo apt-get install libpq-dev build-essential
 ```
 
 Don’t add this precise repo on Ubuntu 14.04
+
 ```sh
 sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main" >> /etc/apt/sources.list'
 wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
