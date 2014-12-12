@@ -1,5 +1,8 @@
-#### Setup the hostname
+# VPS Setup Guide
+___
+## Basic Server Setup
 
+### Setup the hostname
 ```sh
 echo "plato" > /etc/hostname
 hostname -F /etc/hostname
@@ -7,26 +10,26 @@ hostname -F /etc/hostname
 127.0.0.1 localhost.localdomain localhost 
 12.34.56.78 plato.example.com plato
 ```
-
 [ref](http://library.linode.com/getting-started#sph_setting-the-hostname)
 
-#### Set Timezone
+### Set Timezone
+```sh
+dpkg-reconfigure tzdata
+```
 
-  dpkg-reconfigure tzdata
-
-
-#### Update and Upgrade
+### Update and Upgrade packages
 ```sh
 sudo apt-get update
 sudo apt-get upgrade
 ```
 
-#### Enable add-apt-repository
+### Enable add-apt-repository
+(requied only on Ubuntu 12.04)
 ```sh
 sudo apt-get install python-software-properties
 ```
 
-#### IP Tables
+### IP Tables
 ```sh
 sudo vim /etc/iptables.firewall.rules
 ```
@@ -78,9 +81,11 @@ sudo vim /etc/network/if-pre-up.d/firewall
 /sbin/iptables-restore < /etc/iptables.firewall.rules
 sudo chmod +x /etc/network/if-pre-up.d/firewall
 ```
+___
 
-#### Installing nginx with php and mysql
+## Essentials
 
+### Installing nginx with PHP and MySQL
 ```sh
 sudo add-apt-repository ppa:nginx/stable
 sudo apt-get update
@@ -93,31 +98,28 @@ sudo php5enmod mcrypt
 sudo service php5-fpm restart
 ```
 
+### Installing phpMyAdmin
 
-#### Installing Laravel
+```sh
+sudo apt-get install phpmyadmin
+```
+- Click Ok without selecting any server
+- Select No
 
+(if required. For C compiler)
+
+```sh
+sudo apt-get install build-essential
+```
+
+### Installing Laravel
 ```sh
 cd ~
 curl -sS https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
 ```
 
-#### Installing phpMyAdmin
-
-```sh
-sudo apt-get install phpmyadmin
-```
-
-- Click Ok without selecting any server
-- Select No
-
-(if required. For C compiler)
-```sh
-*sudo apt-get install build-essential
-```
-
-#### Installing NodeJS
-
+### Installing NodeJS
 ```sh
 wget http://nodejs.org/dist/v0.10.24/node-v0.10.24.tar.gz
 tar xvfz node-v0.8.18.tar.gz
@@ -127,8 +129,7 @@ make
 sudo make install
 ```
 
-#### Installing redis
-
+### Installing redis
 ```sh
 wget http://download.redis.io/redis-stable.tar.gz
 tar xvfz redis-stable.tar.gz
@@ -141,8 +142,7 @@ Setup Redis
 http://redis.io/topics/quickstart
 
 
-#### Installing MongoDB
-
+### Installing MongoDB
 ```sh
 apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
 echo "deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen" | tee -a /etc/apt/sources.list.d/10gen.list
@@ -152,7 +152,23 @@ apt-get -y install mongodb-10gen
 
 [ref](https://www.digitalocean.com/community/articles/how-to-install-mongodb-on-ubuntu-12-04)
 
-#### Installing Python pip / virtualenv / uwsgi / django
+### Installing PostgreSQL
+
+```sh
+sudo apt-get install postgresql-9.3 postgresql-9.3-postgis-2.1 postgresql-contrib
+sudo apt-get install libpq-dev build-essential
+```
+
+http://trac.osgeo.org/postgis/wiki/UsersWikiPostGIS21UbuntuPGSQL93Apt
+
+Don’t add this precise repo on Ubuntu 14.04
+sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main" >> /etc/apt/sources.list'
+
+wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
+
+sudo apt-get update
+
+### Installing Python pip / virtualenv / uwsgi / django
 
 ```sh
 sudo apt-get install python-pip 
@@ -174,12 +190,16 @@ pip install uwsgi
 
 [ref](http://uwsgi-docs.readthedocs.org/en/latest/tutorials/Django_and_nginx.html)
 
+___
 
-Other essential stuff
+## Other essential stuff
 
-	sudo apt-get install git
 
-Dependencies for monit
+```sh
+sudo apt-get install git
+```
+
+### Dependencies for monit
 
 sudo apt-get install libpam0g-dev
 sudo apt-get install libssl-dev
@@ -192,19 +212,3 @@ http://thinkinginsoftware.blogspot.in/2012/09/today-we-got-weird-error-in-one-of
 OR
 
 ./configure --without-ssl
-
-#### Installing PostgreSQL
-
-```sh
-sudo apt-get install postgresql-9.3 postgresql-9.3-postgis-2.1 postgresql-contrib
-sudo apt-get install libpq-dev build-essential
-```
-
-http://trac.osgeo.org/postgis/wiki/UsersWikiPostGIS21UbuntuPGSQL93Apt
-
-Don’t add this precise repo on Ubuntu 14.04
-sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main" >> /etc/apt/sources.list'
-
-wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
-
-sudo apt-get update
