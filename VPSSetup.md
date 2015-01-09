@@ -6,10 +6,22 @@ ___
 ```sh
 echo "plato" > /etc/hostname
 hostname -F /etc/hostname
-/etc/hosts
+```
+
+```sh
+sudo vim /etc/hosts
+```
+
+```
 127.0.0.1 localhost.localdomain localhost 
 12.34.56.78 plato.example.com plato
 ```
+
+```sh
+hostname
+hostname --fqdn
+```
+
 [ref](http://library.linode.com/getting-started#sph_setting-the-hostname)
 
 ### Set Timezone
@@ -21,13 +33,6 @@ dpkg-reconfigure tzdata
 ```sh
 sudo apt-get update
 sudo apt-get upgrade
-```
-
-### Enable add-apt-repository
-(required only on Ubuntu 12.04)
-
-```sh
-sudo apt-get install python-software-properties
 ```
 
 ### IP Tables
@@ -77,12 +82,19 @@ COMMIT
 ```
 
 ```sh
+iptables-restore < /etc/iptables.firewall.rules
+```
+
+```sh
 sudo vim /etc/network/if-pre-up.d/firewall
 ```
 
 ```sh
 #!/bin/sh
 /sbin/iptables-restore < /etc/iptables.firewall.rules
+```
+
+```sh
 sudo chmod +x /etc/network/if-pre-up.d/firewall
 ```
 ___
@@ -93,12 +105,16 @@ ___
 ```sh
 sudo add-apt-repository ppa:nginx/stable
 sudo apt-get update
-sudo apt-get install nginx php5-fpm php5-cli php5-curl php5-mcrypt git
+sudo apt-get install nginx php5-fpm php5-cli php5-curl php5-mcrypt
 sudo apt-get install mysql-server php5-mysql
-
-sudo vim /etc/php5/fpm/php.ini
-set cgi.fix_pathinfo=0
 sudo php5enmod mcrypt
+```
+
+```sh
+sudo vim /etc/php5/fpm/php.ini
+```
+    set cgi.fix_pathinfo=0
+```sh
 sudo service php5-fpm restart
 ```
 
@@ -202,6 +218,12 @@ ___
 
 ## Other essential stuff
 
+## OSSEC
+
+sudo apt-get install build-essentials
+
+wget https://github.com/ossec/ossec-hids/archive/2.8.1.tar.gz
+
 
 ```sh
 sudo apt-get install git
@@ -222,3 +244,10 @@ http://thinkinginsoftware.blogspot.in/2012/09/today-we-got-weird-error-in-one-of
 OR
 
 ./configure --without-ssl
+
+### Enable add-apt-repository
+(required only on Ubuntu 12.04)
+
+```sh
+sudo apt-get install python-software-properties
+```
