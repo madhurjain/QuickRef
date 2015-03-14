@@ -148,6 +148,13 @@ cd node-v0.8.18
 ./configure
 make
 sudo make install
+ln -s /usr/bin/nodejs /usr/bin/node
+```
+
+##### NodeJS Forever
+```sh
+npm install -g forever
+forever start -l forever.log -o out.log -e err.log server.js
 ```
 
 ### Installing redis
@@ -179,6 +186,20 @@ apt-get -y install mongodb-10gen
 sudo apt-get install postgresql-9.3 postgresql-9.3-postgis-2.1 postgresql-contrib
 sudo apt-get install libpq-dev build-essential
 ```
+
+```sh
+$sudo su - postgres
+$createuser -d -E -P newuser
+> CREATE DATABASE newdatabase
+> GRANT ALL PRIVILEGES ON DATABASE newdatabase TO newuser    
+$psql -h localhost -d newdatabase -U newuser -W
+$psql -h localhost -d newdatabase -U newuser -W < db.sql
+$ pg_dump -h localhost -d newdatabase -U newuser -W > bckp.sql
+```
+
+- `-d` The new user will be allowed to create databases.
+- `-E` Encrypts the user's password stored in the database.
+- `-P` If given, createuser will issue a prompt for the password of the new user.
 
 Don’t add this precise repo on Ubuntu 14.04
 

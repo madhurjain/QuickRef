@@ -19,6 +19,9 @@ grep -irn "func main" .
 
 ## Git
 
+git config --global user.name "name"
+git config --global user.email "name@gmail.com"
+
 ```sh
 git init .
 
@@ -31,3 +34,22 @@ git commit --amend
 git commit --amend -m "revise message"
 ```
 
+
+git branch feature132
+git checkout feature132
+
+# Create branch and checkout
+git checkout -b feature132
+
+
+##### Disable IPTables
+
+iptables -F
+iptables -X
+iptables -t nat -F
+iptables -t nat -X
+iptables -t mangle -F
+iptables -t mangle -X
+iptables -P INPUT ACCEPT
+iptables -P OUTPUT ACCEPT
+iptables -P FORWARD ACCEPT
