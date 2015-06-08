@@ -11,6 +11,13 @@ find . -name "*.php"
 find . -type f -name "*.php" -exec rm -f {} \;
 ```
 
+##### Find files newer than 2014/Jan/01, in /var/www
+
+```sh
+touch --date "2014-01-01" /tmp/foo
+find /var/www -newer /tmp/foo
+```
+ 
 ##### Search for text inside files
 
 ```sh
@@ -53,3 +60,12 @@ iptables -t mangle -X
 iptables -P INPUT ACCEPT
 iptables -P OUTPUT ACCEPT
 iptables -P FORWARD ACCEPT
+
+
+##### Find suspicious process
+
+lsof -i | less
+
+note the PID
+
+lsof | grep pid

@@ -180,6 +180,27 @@ apt-get -y install mongodb-10gen
 
 [ref](https://www.digitalocean.com/community/articles/how-to-install-mongodb-on-ubuntu-12-04)
 
+
+### Installing Go
+
+```sh
+sudo apt-get install gcc libc6-dev
+```
+
+```sh
+git clone https://go.googlesource.com/go
+cd go
+git checkout go1.4.1
+cd src
+./all.bash
+```
+
+```sh
+vim /etc/profile
+export PATH=$PATH:/root/go/bin
+source /etc/profile
+```
+
 ### Installing PostgreSQL
 
 ```sh
@@ -271,4 +292,15 @@ OR
 
 ```sh
 sudo apt-get install python-software-properties
+```
+
+## ClamAV
+
+```sh
+sudo apt-get install clamav
+sudo freshclam
+```
+
+```sh
+nohup clamscan -r --bell -i /var/www > scanreport &
 ```
