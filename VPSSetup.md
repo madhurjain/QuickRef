@@ -1,5 +1,6 @@
-# VPS Setup Guide
-___
+VPS Setup Guide
+---------------
+
 ## Basic Server Setup
 
 ### Setup the hostname
