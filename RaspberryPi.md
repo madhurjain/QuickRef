@@ -6,12 +6,12 @@ sudo vim /etc/wpa_supplicant/wpa_supplicant.conf
 
 add to last
 
-`
+```
 network={
   ssid="your_wifi_ssid"
   psk="your_wifi_password"
 }
-`
+```
 
 restart wifi network interface
 
