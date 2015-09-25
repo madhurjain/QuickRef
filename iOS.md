@@ -8,8 +8,7 @@ Apple Push Notification Service
 5. Download the `.cer` file
 6. Open and Import it in Keychain Access
 7. Export the private key as .p12 file
-8. In the directory containing cert.cer and key.p12,
-   execute the following commands to generate your .pem files
+8. In the directory containing cert.cer and key.p12, execute the following commands to generate your .pem files
 
 ```sh
 $ openssl x509 -in aps_development.cer -inform DER -outform PEM -out aps_development.pem

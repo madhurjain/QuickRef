@@ -40,3 +40,21 @@ gateway 192.168.1.1
 wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
 iface default inet dhcp
 ```
+
+
+##### LIRC
+
+```sh
+sudo apt-get install lirc
+```
+
+##### Load LIRC Driver for RaspberryPi GPIO
+
+```sh
+sudo vim /etc/modules
+```
+
+```
+lirc_dev
+lirc_rpi gpio_in_pin=23 gpio_out_pin=22
+```
