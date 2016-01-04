@@ -36,6 +36,7 @@ Cleaning Up
 - Open these files in `nano` or `vim` editor and remove the suspicious code
 - Update/Reinstall Wordpress core from dashboard which should overwrite the core files if they were modified
 - Open the website in Chrome and check the `Console` for any errors relating to missing content and fix those
+- Once you're sure the code base is clean, make a commit to git
 - Submit a Reconsideration Request from Webmaster Tools to get rid of the `This site may be hacked` message from Google results
 
 
