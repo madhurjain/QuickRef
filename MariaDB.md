@@ -1,3 +1,4 @@
+```
 ## sudo mysql_install_db
 Installing MariaDB/MySQL system tables in '/var/lib/mysql' ...
 OK
@@ -10,7 +11,7 @@ PLEASE REMEMBER TO SET A PASSWORD FOR THE MariaDB root USER !
 To do so, start the server, then issue the following commands:
 
 '/usr/bin/mysqladmin' -u root password 'new-password'
-'/usr/bin/mysqladmin' -u root -h ip-172-31-21-46.eu-west-2.compute.internal password 'new-password'
+'/usr/bin/mysqladmin' -u root -h localhost password 'new-password'
 
 Alternatively you can run:
 '/usr/bin/mysql_secure_installation'
@@ -36,16 +37,20 @@ http://dev.mysql.com
 Consider joining MariaDB's strong and vibrant community:
 https://mariadb.org/get-involved
 
- /bin/sh /usr/bin/mysqld_safe --datadir=/var/lib/mysql --pid-file=/var/lib/mysql/ip-172-31-21-46.eu-west-2.compute.internal.pid --skip-grant-tables
+ /bin/sh /usr/bin/mysqld_safe --datadir=/var/lib/mysql --pid-file=/var/lib/mysql/localhost.pid --skip-grant-tables
+```
  
- 
+##For Rails stuff
+``` 
 gem install mysql2 -- '--with-mysql-lib="/var/lib/mysql" --with-mysql-include="/usr/include/mysql" --with-mysql-dir="/var/lib/mysql"
- 
- 
 bundle config build.mysql2  --with-mysql-lib="/var/lib/mysql" --with-mysql-include="/usr/include/mysql" --with-mysql-config="/usr/bin/mysql_config"
 
+``` 
+ 
+``` 
+## 
 
-## sudo mysql_secure_installation
+sudo mysql_secure_installation
 
 NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MariaDB
       SERVERS IN PRODUCTION USE!  PLEASE READ EACH STEP CAREFULLY!
@@ -106,10 +111,10 @@ All done!  If you've completed all of the above steps, your MariaDB
 installation should now be secure.
 
 Thanks for using MariaDB!
-[ec2-user@ip-172-31-21-46 oneviewlatest]$
-[ec2-user@ip-172-31-21-46 oneviewlatest]$
-[ec2-user@ip-172-31-21-46 oneviewlatest]$
-[ec2-user@ip-172-31-21-46 oneviewlatest]$ mysql -uroot -p
+```
+ 
+```
+[localhost temp]$ mysql -uroot -p
 Enter password:
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
 Your MariaDB connection id is 16
@@ -119,21 +124,19 @@ Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
 
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-MariaDB [(none)]>
-MariaDB [(none)]>
-MariaDB [(none)]> create user 'oneviewlatest' identified by '172-31-21-46-One-viewlatest';
+MariaDB [(none)]> create user 'mydb_user' identified by 'mypassword';
 
-MariaDB [(none)]> CREATE DATABASE IF NOT EXISTS oneviewlatest_development;
+MariaDB [(none)]> CREATE DATABASE IF NOT EXISTS mydb_development;
 
-MariaDB [(none)]> CREATE DATABASE IF NOT EXISTS oneviewlatest_production;
+MariaDB [(none)]> CREATE DATABASE IF NOT EXISTS mydb_production;
 
-MariaDB [(none)]> CREATE DATABASE IF NOT EXISTS oneviewlatest_test;
+MariaDB [(none)]> CREATE DATABASE IF NOT EXISTS mydb_test;
 
-MariaDB [(none)]> GRANT ALL PRIVILEGES on oneviewlatest_development.* to 'oneviewlatest'@'localhost';
+MariaDB [(none)]> GRANT ALL PRIVILEGES on mydb_development.* to 'mydb_user'@'localhost';
 
-MariaDB [(none)]> GRANT ALL PRIVILEGES on oneviewlatest_production.* to 'oneviewlatest'@'localhost';
+MariaDB [(none)]> GRANT ALL PRIVILEGES on mydb_production.* to 'mydb_user'@'localhost';
 
-MariaDB [(none)]> GRANT ALL PRIVILEGES on oneviewlatest_test.* to 'oneviewlatest'@'localhost';
+MariaDB [(none)]> GRANT ALL PRIVILEGES on mydb_test.* to 'mydb_user'@'localhost';
 
 MariaDB [(none)]> flush privileges;
-
+```
