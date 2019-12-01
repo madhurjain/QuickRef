@@ -89,3 +89,24 @@ lsof | grep pid
 `top` Run to see if anything looks different from other commands.
 
 Some of the commands require the sysstat package to be installed
+
+
+#### Archival + Compression
+
+##### TAR + GZip Compress
+```sh
+tar -czf ~/backup-archive.tar.gz ~/backup/
+```
+
+##### Uncompress
+```sh
+tar -xzvf ~/backup-archive.tar.gz
+```
+
+##### View Contents of Archive
+```sh
+tar -tf ~/backup-archive.tar
+```
+```sh
+zip -sf ~/compressed.zip
+```
