@@ -1,8 +1,29 @@
 MySQL Guide
 -----------
 
-## Backup
+## Create Database
 
+```sh
+mysql -u root -p
+mysql> CREATE DATABASE dbname;
+```
+
+## Create New User
+```sh
+mysql> CREATE USER 'dbuser'@'localhost' IDENTIFIED BY 'password';
+```
+```sh
+mysql> GRANT ALL PRIVILEGES ON dbname.* TO 'dbuser'@'localhost';
+mysql> GRANT ALL PRIVILEGES ON dbname.* TO 'dbuser'@'localhost' IDENTIFIED BY 'password';
+mysql> FLUSH PRIVILEGES;
+```
+
+## Delete User
+```
+mysql> DROP USER ‘username’@‘localhost’;
+```
+
+## Backup
 
 ### Backup / Restore Database
 
