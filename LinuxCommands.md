@@ -9,6 +9,9 @@ Important Linux Commands
 find . -name "*.php"
 
 find . -type f -name "*.php" -exec rm -f {} \;
+
+# Delete all except file.txt
+find ! -name 'file.txt' -type f -exec rm -f {} +
 ```
 
 ##### Find files newer than 2014/Jan/01, in /var/www
@@ -67,4 +70,43 @@ iptables -P FORWARD ACCEPT
 lsof -i | less
 # note the PID
 lsof | grep pid
+```
+
+
+##### Linux performance analysis in 60,000 Milliseconds
+
+[Netflix Blog](https://media.netflix.com/en/tech-blog/linux-performance-analysis-in-60-000-milliseconds)
+
+`uptime` - A way to view the load averages.
+`dmesg | tail` - Views the last 10 system messages, if any.
+`vmstat 1` - Prints a summary of key server statistics on each line.
+`mpstat -P ALL 1` - Prints CPU time breakdowns per CPU, which can be used to check for an imbalance.
+`pidstat 1` - Prints a rolling summary instead of clearing the screen.
+`iostat -xz 1` - A tool for understanding block devices (disks).
+`free -m` - Columns that show buffers and cache.
+`sar -n DEV 1` - A tool to check the network interface.
+`sar -n TCP,ETCP 1` - Shows key TCP metrics.
+`top` Run to see if anything looks different from other commands.
+
+Some of the commands require the sysstat package to be installed
+
+
+#### Archival + Compression
+
+##### TAR + GZip Compress
+```sh
+tar -czf ~/backup-archive.tar.gz ~/backup/
+```
+
+##### Uncompress
+```sh
+tar -xzvf ~/backup-archive.tar.gz
+```
+
+##### View Contents of Archive
+```sh
+tar -tf ~/backup-archive.tar
+```
+```sh
+zip -sf ~/compressed.zip
 ```
