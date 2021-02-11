@@ -14,3 +14,6 @@ A collection of commands, scripts and config I have used and need to refer often
 - [SSL](SSL.md)
 - [VPSSetup](VPSSetup.md)
 - [Wordpress](Wordpress.md)
+- [k8s](k8s.org)
+- [MariaDB](MariaDB.md)
+- [getInstalledSoftwares.ps1 powershell](getInstalledSoftwares.ps1) 
