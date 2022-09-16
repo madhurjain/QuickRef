@@ -1,4 +1,37 @@
-## PostgreSQL Commands
+# PostgreSQL Commands
+
+## Setup PostgreSQL Server on Ubuntu
+
+#### Allow remote connections
+
+```
+sudo -u postgres psql -c "SHOW config_file;"
+```
+Edit `/etc/postgresql/12/main/postgresql.conf` and set `listen_addresses = '*'`
+Edit `/etc/postgresql/13/main/pg_hba.conf` 
+
+```
+host    feedbackflap    ffuser          0.0.0.0/0               md5
+host    feedbackflap    ffuser          :/0                     md5
+```
+
+```
+sudo systemctl restart postgresql
+sudo ufw allow postgresql/tcp
+sudo ufw status
+```
+
+To check which IP/Post postgresql is binded to -
+```
+netstat -nlt
+```
+
+Below command should show -
+```
+Proto Recv-Q Send-Q Local Address           Foreign Address         State
+tcp        0      0 0.0.0.0:5432            0.0.0.0:*               LISTEN
+tcp6       0      0 :::5432                 :::*                    LISTEN
+```
 
 #### Login
 
@@ -72,6 +105,10 @@ psql -h localhost -d mydatabase -U myuser -W < schema.sql
 ```
 \q
 ```
+
+
+
+
 
 #### Misc Commands
 
