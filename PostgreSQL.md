@@ -12,7 +12,7 @@ Edit `/etc/postgresql/13/main/pg_hba.conf`
 
 ```
 host    feedbackflap    ffuser          0.0.0.0/0               md5
-host    feedbackflap    ffuser          :/0                     md5
+host    feedbackflap    ffuser          ::/0                    md5
 ```
 
 ```
